@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { createBrowserHistory } from 'history'
+import { Box } from '@chakra-ui/react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Login } from 'components/pages'
 
-function App() {
+export const history = createBrowserHistory()
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Box className="App" bgColor="bgcolor.500">
+      <Router history>
+        <Switch>
+          <Route path="/" component={() => <> Homepage </>} exact/>
+          <Route path="/login" component={Login} exact/>
+        </Switch>
+      </Router>
+    </Box>
+  )
 }
 
-export default App;
+export default App
