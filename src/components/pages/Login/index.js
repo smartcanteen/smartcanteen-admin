@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Heading,
@@ -8,11 +8,30 @@ import {
   InputGroup,
   Button,
 } from "@chakra-ui/react";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { authState, exampleAtom } from "recoil/authentication/";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { authState, exampleAtom, handleLogin, simpenData, testing } from "recoil/authentication/";
+import { submitLogin } from 'configs/api'
 const Login = () => {
-  const token = useRecoilState(exampleAtom);
-  console.log(`token`, token);
+  const token = useRecoilValue(authState);
+  const[loginData, setLoginData] = useState({
+    email:'',
+    password:''
+  })
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setLoginData((state) => ({ ...state, [name]: value }));
+  };
+  
+  const handleSubmit = () => {
+    console.log(`loginData`, loginData)
+    const test = submitLogin(loginData).then(res => console.log(`res`, res?.data | 'gogo'))
+
+    console.log(`test`, test)
+ 
+  }
+  // console.log(`token`, token)
+
   return (
     <Box
       className="login-page-wrapper"
@@ -35,21 +54,21 @@ const Login = () => {
         borderTopColor="primary.500"
       >
         <Box mb={4}>
-          <FormLabel for="email">Email Address</FormLabel>
+          <FormLabel for="email">Email Address - {token?.token}</FormLabel>
           <InputGroup>
-            <Input type="text" name="email" borderRadius="0" />
+            <Input type="text" name="email" borderRadius="0" onChange={handleChange}/>
           </InputGroup>
         </Box>
 
         <Box mb={8}>
           <FormLabel for="password">Password</FormLabel>
           <InputGroup>
-            <Input type="password" name="password" borderRadius="0" />
+            <Input type="password" name="password" borderRadius="0" onChange={handleChange}/>
           </InputGroup>
         </Box>
 
         <Box mb={1}>
-          <Button bgColor="primary.500" color="white" borderRadius="0" w="100%">
+          <Button bgColor="primary.500" color="white" borderRadius="0" w="100%" onClick={handleSubmit}>
             Login
           </Button>
         </Box>
