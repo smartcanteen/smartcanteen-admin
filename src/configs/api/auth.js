@@ -18,3 +18,11 @@ export const submitLogin = async (payload) => {
         return "Failed"
     }
 }
+
+export const logout = async () => {
+    await localStorage.removeItem('token_admin')
+    return{
+        success:true,
+        message:"Berhasil Logout"
+    }
+}
