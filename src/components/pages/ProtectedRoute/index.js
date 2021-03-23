@@ -1,14 +1,15 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
+import { useRecoilValue } from 'recoil'
+import { authState } from 'recoil/authentication'
 
 const ProtectedRoute = ({component: Component, ...rest }) => {
-    // const isAuthenticated = useSelector(state => state.authentication.isAuthenticated)
-    const isAuthenticated = false
+    const status = useRecoilValue(authState)
     return(
         <Route
             {...rest}
             render={
-                (props) => (isAuthenticated ? <Component {...props}/> : <Redirect to="/login"/>)
+                (props) => (status?.isAuthenticated ? <Component {...props}/> : <Redirect to="/login"/>)
             }
         />
     )

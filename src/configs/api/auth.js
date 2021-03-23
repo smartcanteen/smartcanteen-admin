@@ -9,7 +9,10 @@ export const submitLogin = async (payload) => {
     try{
         return await 
         axios.post('/admin/login', formData)
-             .then(res => res)
+             .then(res => {
+                 localStorage.setItem('token_admin', res.data?.token)
+                 return res
+             })
              .catch(err => err.response)
     }catch{
         return "Failed"

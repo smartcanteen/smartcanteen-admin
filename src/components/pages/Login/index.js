@@ -8,9 +8,12 @@ import {
   InputGroup,
   Button,
 } from "@chakra-ui/react";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { authState, exampleAtom, handleLogin, simpenData, testing } from "recoil/authentication/";
+import { useRecoilCallback, useRecoilValue } from "recoil";
+import { authState } from "recoil/authentication/";
 import { submitLogin } from 'configs/api'
+
+const cardWidth = "20%"
+
 const Login = () => {
   const token = useRecoilValue(authState);
   const[loginData, setLoginData] = useState({
@@ -22,15 +25,12 @@ const Login = () => {
     const { name, value } = e.target;
     setLoginData((state) => ({ ...state, [name]: value }));
   };
-  
-  const handleSubmit = () => {
-    console.log(`loginData`, loginData)
-    const test = submitLogin(loginData).then(res => console.log(`res`, res?.data | 'gogo'))
 
-    console.log(`test`, test)
- 
-  }
-  // console.log(`token`, token)
+  const handleSubmit = useRecoilCallback( async ({set}) => {
+    const result = await submitLogin(loginData)
+    set(authState, {...authState, token:result.data.token})
+    console.log(`token?.token`, token?.token)
+  })
 
   return (
     <Box
@@ -47,14 +47,15 @@ const Login = () => {
         p={8}
         mb={3}
         bg="white"
-        minW="25%"
+        minW={cardWidth}
+        maxW={cardWidth}
         border="1px solid"
         borderColor="borderColor.500"
         borderTop="5px solid"
         borderTopColor="primary.500"
       >
         <Box mb={4}>
-          <FormLabel for="email">Email Address - {token?.token}</FormLabel>
+          <FormLabel for="email">Email Address</FormLabel>
           <InputGroup>
             <Input type="text" name="email" borderRadius="0" onChange={handleChange}/>
           </InputGroup>
@@ -78,7 +79,8 @@ const Login = () => {
         className="login-box"
         p={4}
         bg="white"
-        minW="25%"
+        minW={cardWidth}
+        maxW={cardWidth}
         border="1px solid"
         borderColor="borderColor.500"
         textAlign="center"
