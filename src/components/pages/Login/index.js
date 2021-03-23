@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {
   Box,
-  Heading,
+  Image,
   Text,
   FormLabel,
   Input,
@@ -13,6 +13,7 @@ import { useRecoilCallback, useRecoilValue } from "recoil";
 import { useHistory } from "react-router-dom";
 import { authState } from "recoil/authentication/";
 import { submitLogin } from 'configs/api'
+import SmartCanteenLogo from 'assets/images/SmartCanteenLogo.svg'
 
 const cardWidth = {
   webSize:'25%',
@@ -78,6 +79,9 @@ const Login = () => {
         borderTop="5px solid"
         borderTopColor="primary.500"
       >
+      <Box mb={10} d="flex" justifyContent="center" alignItems="center">
+        <Image src={SmartCanteenLogo} boxSize="50%"/>
+      </Box>
         <Box mb={4}>
           <FormLabel for="email">Email Address</FormLabel>
           <InputGroup>

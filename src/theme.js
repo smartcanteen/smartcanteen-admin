@@ -1,5 +1,21 @@
 import { extendTheme } from '@chakra-ui/react'
 
+const components = {
+	Drawer: {
+		variants: {
+			alwaysOpen: {
+				parts: ['dialog, dialogContainer'],
+				dialog: {
+					pointerEvents: 'auto',
+				},
+				dialogContainer: {
+					pointerEvents: 'none',
+				},
+			},
+		},
+	},
+};
+
 const customTheme = extendTheme({
     colors:{
         primary:{
@@ -13,6 +29,7 @@ const customTheme = extendTheme({
             500:'#ccd0d4'
         }
     },
+    components:components
 })
 
 export default customTheme
