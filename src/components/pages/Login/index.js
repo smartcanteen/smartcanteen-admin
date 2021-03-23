@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Heading,
@@ -7,19 +7,31 @@ import {
   Input,
   InputGroup,
   Button,
+  useToast
 } from "@chakra-ui/react";
 import { useRecoilCallback, useRecoilValue } from "recoil";
+import { useHistory } from "react-router-dom";
 import { authState } from "recoil/authentication/";
 import { submitLogin } from 'configs/api'
 
-const cardWidth = "20%"
+const cardWidth = {
+  webSize:'25%',
+  resSize:'80%'
+}
 
 const Login = () => {
-  const token = useRecoilValue(authState);
+  const toast = useToast()
+  const history = useHistory()
+  const {isAuthenticated} = useRecoilValue(authState);
+
+  useEffect(()=>{
+      if(isAuthenticated) history.push('/')
+  },[])
   const[loginData, setLoginData] = useState({
     email:'',
     password:''
   })
+  const[isLoading, setIsLoading] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,9 +39,21 @@ const Login = () => {
   };
 
   const handleSubmit = useRecoilCallback( async ({set}) => {
-    const result = await submitLogin(loginData)
-    set(authState, {...authState, token:result.data.token})
-    console.log(`token?.token`, token?.token)
+    setIsLoading(true)
+    const { data } = await submitLogin(loginData)
+    console.log(`data`, data)
+    if(!data.success){
+      toast({
+        title:data.message,
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      })
+    }else{
+      set(authState, {...authState, token:data?.data.token, isAuthenticated:true})
+      history.push("/")
+    }
+    setIsLoading(false)
   })
 
   return (
@@ -47,8 +71,8 @@ const Login = () => {
         p={8}
         mb={3}
         bg="white"
-        minW={cardWidth}
-        maxW={cardWidth}
+        minW={[cardWidth.resSize,cardWidth.resSize,cardWidth.webSize]}
+        maxW={cardWidth.webSize}
         border="1px solid"
         borderColor="borderColor.500"
         borderTop="5px solid"
@@ -69,7 +93,7 @@ const Login = () => {
         </Box>
 
         <Box mb={1}>
-          <Button bgColor="primary.500" color="white" borderRadius="0" w="100%" onClick={handleSubmit}>
+          <Button bgColor="primary.500" color="white" borderRadius="0" w="100%" onClick={handleSubmit} isLoading={isLoading}>
             Login
           </Button>
         </Box>
@@ -79,8 +103,8 @@ const Login = () => {
         className="login-box"
         p={4}
         bg="white"
-        minW={cardWidth}
-        maxW={cardWidth}
+        minW={[cardWidth.resSize,cardWidth.resSize,cardWidth.webSize]}
+        maxW={cardWidth.webSize}
         border="1px solid"
         borderColor="borderColor.500"
         textAlign="center"

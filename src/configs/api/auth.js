@@ -10,7 +10,7 @@ export const submitLogin = async (payload) => {
         return await 
         axios.post('/admin/login', formData)
              .then(res => {
-                 localStorage.setItem('token_admin', res.data?.token)
+                 localStorage.setItem('token_admin', res.data?.data.token)
                  return res
              })
              .catch(err => err.response)

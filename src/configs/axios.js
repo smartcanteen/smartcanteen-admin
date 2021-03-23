@@ -9,6 +9,7 @@ const instance = axios.create({
     headers:headers,
 })
 
-instance.interceptors.response.use((response)=>response.data)
+// For accesing straight to 'data'
+// instance.interceptors.response.use((response)=>response.data)
 
 export default instance
