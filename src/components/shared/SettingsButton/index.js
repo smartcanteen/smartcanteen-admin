@@ -33,7 +33,7 @@ const SettingsButton = () => {
     })
   return (
     <Menu>
-      <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+      <MenuButton as={Button} rightIcon={<ChevronDownIcon />} bgColor="transparent">
         <Box d="flex" alignItems="center" justifyContent="center">
           <Icon as={SettingsIcon} mr={1} />
           <Text>Settings</Text>

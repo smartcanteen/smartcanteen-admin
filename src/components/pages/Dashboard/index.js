@@ -1,6 +1,6 @@
 import React from 'react'
-import { Box } from '@chakra-ui/react'
-import { DashboardDrawer, DashboardContent, DashboardBreadcrumb, SettingsButton } from 'components/shared'
+import { Box, Heading } from '@chakra-ui/react'
+import { DashboardDrawer, DashboardContent, DashboardBreadcrumb, SettingsButton, StatsCard, GreetingCard } from 'components/shared'
 
 const breadCrumbItem = [
     {label:'home', uri:'/'},
@@ -11,7 +11,7 @@ const Dashboard = () => {
         <Box bgColor="white">
             <DashboardDrawer/>
 
-            <Box bgColor="bgcolor.500">
+            <Box bgColor="white" shadow="sm">
                 <DashboardContent>
                     <Box d="flex" alignItems="center" justifyContent="space-between">
                         <DashboardBreadcrumb breadcrumbData={breadCrumbItem}/>
@@ -22,7 +22,13 @@ const Dashboard = () => {
             </Box>
             
                 <DashboardContent>
-                    sadasd
+                    <GreetingCard/>
+                    {/* <Box className="stats-wrapper" d="flex" w="100%" bgColor="pink" justifyContent="">
+                        <StatsCard bgColor="primary.500"/>
+                        <StatsCard bgColor="primary.500"/>
+                        <StatsCard bgColor="primary.500"/>
+                        <StatsCard bgColor="primary.500"/>
+                    </Box> */}
                 </DashboardContent>
         </Box>
     )

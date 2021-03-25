@@ -13,8 +13,8 @@ const ProfileCard = () => {
 
     useEffect(() => {
         const getProfileData = async () => {
-            const { data } = await getProfile(token)
-            setProfileData({...profileData, firstName:data.data.first_name, email:data.data.email})
+            const response = await getProfile(token)
+            setProfileData({...profileData, firstName:response?.data.data.first_name, email:response?.data.data.email})
         }
         getProfileData()
     }, [])
