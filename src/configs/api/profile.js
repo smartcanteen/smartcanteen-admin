@@ -9,6 +9,7 @@ export const getProfile = async (token) => {
         },
       })
       .then((res) => {
+        localStorage.setItem('detail_admin', JSON.stringify(res.data.data))
         return res;
       })
       .catch((err) => err.response);

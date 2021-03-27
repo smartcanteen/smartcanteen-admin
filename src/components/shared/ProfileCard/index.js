@@ -3,13 +3,14 @@ import { Box, Text, Image } from '@chakra-ui/react'
 import ProfileAvatar from 'assets/images/ProfileAvatar.svg'
 import { getProfile } from 'configs/api'
 import { useRecoilValue } from 'recoil'
-import { authState } from 'recoil/authentication'
+import { authState, authProfileData } from 'recoil/authentication'
 const ProfileCard = () => {
     const[profileData, setProfileData] = useState({
         firstName:'',
         email:''
     })
     const {token} = useRecoilValue(authState)
+    const temp = useRecoilValue(authProfileData)
 
     useEffect(() => {
         const getProfileData = async () => {

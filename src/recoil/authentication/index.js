@@ -1,3 +1,3 @@
-export { authState, exampleAtom, authData, authTokenState } from './atom'
+export { authState, authProfileData } from './atom'
 
 export { handleLogin } from './selector'

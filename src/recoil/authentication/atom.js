@@ -2,14 +2,7 @@ import { atom, selectorFamily, selector } from 'recoil'
 
 const tokenAdmin = localStorage.getItem('token_admin') ? localStorage.getItem('token_admin') : '' 
 const authStatus = tokenAdmin !== '' ? true : false
-
-
-export const authTokenState = atom({
-    key:'authTokenState',
-    default:''
-})
-
-
+const profileData = localStorage.getItem('detail_admin') ? JSON.parse(localStorage.getItem('detail_admin')) : null
 export const authState = atom({
     key:'authState',
     default:{
@@ -18,12 +11,7 @@ export const authState = atom({
     }
 })
 
-export const authData = atom({
-    key:'authData',
-    default:[]
-})
-
-export const exampleAtom = atom({
-    key:'exampleAtom',
-    default:"this is example atom"
+export const authProfileData = atom({
+    key:'authProfileData',
+    default:profileData
 })

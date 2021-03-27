@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import { Breadcrumb, BreadcrumbItem, Text } from '@chakra-ui/react'
 const DashboardBreadcrumb = props => {
     const { breadcrumbData } = props
-    console.log(`breadCrumbData`, breadcrumbData)
     return (
         <Breadcrumb>
             {breadcrumbData?.map( (item, index) =>

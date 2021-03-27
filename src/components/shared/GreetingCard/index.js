@@ -2,15 +2,17 @@ import React, { useState, useEffect } from "react";
 import { Box, Heading, Text } from "@chakra-ui/react";
 
 import { useRecoilValue } from 'recoil'
-
+import { authProfileData } from 'recoil/authentication'
 import MorningImage from "assets/images/morning-bg.svg";
 import NightImage from "assets/images/night-bg.svg";
 
 const GreetingCard = () => {
     const currentDate = new Date()
+    const profileData = useRecoilValue(authProfileData)
+
     const currentStatus = (currentDate) => {
-        if(currentDate < 12) return 'morning'
-        else if(currentDate < 18) return 'afternoon'
+        if(currentDate.getHours() < 12) return 'morning'
+        else if(currentDate.getHours() < 18) return 'afternoon'
         else return 'night'
     }
   const [currentTime, setCurrentTime] = useState({
@@ -30,7 +32,8 @@ const GreetingCard = () => {
             seconds:updateDate.getSeconds()
         })
       },1000)
-  }, [currentDate])
+      console.log("kboom")
+  }, [])
 
   let clockColor = ""
   let captionColor = ""
@@ -69,12 +72,12 @@ const GreetingCard = () => {
       bgPos="bottom"
       bgRepeat="no-repeat"
     >
-      <Box>
+      <Box mb="-3px">
         <Heading fontSize="100px" textColor={currentStatus(currentDate) === 'night' ? '#F39C12' : '#182C61'}>{(currentTime.hours<10?'0':'') + currentTime.hours}:{(currentTime.minutes<10?'0':'') + currentTime.minutes}</Heading>
       </Box>
       <Box textAlign="center">
-          <Text mb={2} fontSize="25px" fontWeight="bold" textColor={captionColor} textTransform="capitalize">Good {currentStatus(currentDate)}, Athalla</Text>
-          <Text fontSize="18px" textColor={captionColor} textTransform="capitalize">{greetingText}</Text>
+          <Text fontSize="40px" fontWeight="bold" textColor={captionColor} textTransform="capitalize">Good {currentStatus(currentDate)}, {profileData?.first_name + ' ' + profileData?.last_name}</Text>
+          <Text fontSize="20px" textColor={captionColor} textTransform="capitalize">{greetingText}</Text>
       </Box>
     </Box>
   );

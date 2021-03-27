@@ -21,6 +21,7 @@ export const submitLogin = async (payload) => {
 
 export const logout = async () => {
     await localStorage.removeItem('token_admin')
+    await localStorage.removeItem('detail_admin')
     return{
         success:true,
         message:"Berhasil Logout"
