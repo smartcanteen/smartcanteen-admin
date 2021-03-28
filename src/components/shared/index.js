@@ -5,6 +5,8 @@ import DashboardBreadcrumb from './DashboardBreadcrumb'
 import SettingsButton from './SettingsButton'
 import StatsCard from './StatsCard'
 import GreetingCard from './GreetingCard'
+import DashboardTopNav from './DashboardTopNav'
+import BoothProfileCard from './BoothProfileCard'
 export {
     DashboardDrawer,
     DashboardContent,
@@ -12,5 +14,7 @@ export {
     DashboardBreadcrumb,
     SettingsButton,
     StatsCard,
-    GreetingCard
+    GreetingCard,
+    DashboardTopNav,
+    BoothProfileCard
 }

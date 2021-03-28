@@ -19,13 +19,13 @@ import SmartCanteenLogo from 'assets/images/SmartCanteenLogo.svg'
 import { ProfileCard } from 'components/shared'
 const menuList = [
     {label:'home', uri:'/'},
-    {label:'booth', uri:'/add'},
+    {label:'booth', uri:'/booth'},
 ]
 
 const DashboardDrawer = () => {
     const currentPath = useLocation().pathname;
   return (
-    <Drawer variant='alwaysOpen' isOpen placement="left" motionPreset="none" autoFocus closeOnOverlayClick={false} trapFocus={false} useInert={false}>
+    <Drawer variant='alwaysOpen' isOpen placement="left" motionPreset="none" autoFocus={false} blockScrollOnMount={false} closeOnOverlayClick={false} trapFocus={false} useInert={false}>
       <DrawerContent>
         <DrawerHeader mb={12}>
             <Box d="flex" justifyContent="center" alignItems="center">
