@@ -10,14 +10,25 @@ const ProfileCard = () => {
         email:''
     })
     const {token} = useRecoilValue(authState)
-    const temp = useRecoilValue(authProfileData)
+    const lastProfileData = useRecoilValue(authProfileData)
 
     useEffect(() => {
         const getProfileData = async () => {
             const response = await getProfile(token)
             setProfileData({...profileData, firstName:response?.data.data.first_name, email:response?.data.data.email})
         }
-        getProfileData()
+
+        // avoid fetching every visit /home route, get from localStorage
+        const setLastProfileData = async () => {
+            console.log(`lastProfileData`, lastProfileData)
+            setProfileData({...profileData, firstName:lastProfileData?.first_name, email:lastProfileData?.email})
+        }
+
+        if(lastProfileData===null){
+            getProfileData()
+        }else{
+            setLastProfileData()
+        }
     }, [])
     return (
         <Box p={4} bgColor="primary.500" borderRadius={8} d="inline-flex">

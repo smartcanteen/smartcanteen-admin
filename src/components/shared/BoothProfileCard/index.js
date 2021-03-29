@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types'
 import { Box, Button, Divider, Heading, Image, Text } from "@chakra-ui/react";
 import { PhoneIcon } from "@chakra-ui/icons";
 import BoothAvatar from "assets/images/BoothAvatar.svg";
@@ -6,16 +7,19 @@ import { Link } from "react-router-dom";
 
 const cardWidth = "100%";
 // const cardWidth = "250px";
-const cardHeight = "150px";
-const cardBorderRad = 8
-const BoothProfileCard = () => {
+const cardHeight = "300px";
+const cardBorderRad = 12
+const BoothProfileCard = props => {
+  const { boothName, boothDesc, boothPhone } = props
   return (
     <Box
       minH={cardHeight}
+      maxH={cardHeight}
       borderRadius={cardBorderRad}
       minW={cardWidth}
       maxW={cardWidth}
       pb={0}
+      pt={5}
       shadow="md"
       bgColor="white"
       d="inline-flex"
@@ -31,9 +35,9 @@ const BoothProfileCard = () => {
         <Box textAlign="center" px={4}>
           <Box my={2}>
             <Heading fontSize="lg" mb={2}>
-              Warunk Mamah Muda
+              { boothName }
             </Heading>
-            <Text>Ini adalah detail dari warunk mamah muda.</Text>
+            <Text>{ boothDesc }</Text>
           </Box>
           <Divider />
           <Box
@@ -43,17 +47,17 @@ const BoothProfileCard = () => {
             className="phone-number"
           >
             <PhoneIcon color="blackAlpha.700" mr={1} />
-            <Text color="blackAlpha.700">0812938912</Text>
+            <Text color="blackAlpha.700">{ boothPhone }</Text>
           </Box>
         </Box>
-        <Box mt={2} minW="100%">
+        <Box minW="100%">
           <Link to="/booth/detail">
             <Button
               borderRadius="0"
               bgColor="primary.500"
               color="white"
               isFullWidth
-              minH="50px"
+              minH="55px"
               borderBottomRadius={cardBorderRad}
             >
               Details
@@ -65,4 +69,9 @@ const BoothProfileCard = () => {
   );
 };
 
+BoothProfileCard.propTypes = {
+  boothName: PropTypes.string,
+  boothDesc: PropTypes.string,
+  boothPhone: PropTypes.string
+}
 export default BoothProfileCard;

@@ -1,17 +1,19 @@
-import React from "react";
-import { Box, SimpleGrid } from "@chakra-ui/react";
+import React, { useState } from "react";
+import { Box, SimpleGrid, Container, Heading } from "@chakra-ui/react";
 import {
   DashboardDrawer,
   DashboardTopNav,
   DashboardBreadcrumb,
   DashboardContent,
   BoothProfileCard,
+  StatsCard,
+  BoothProfileList,
+  StatsList,
 } from "components/shared";
 
-const breadCrumbItem = [
-    {label:'booth', uri:'/booth'},
-]
+const breadCrumbItem = [{ label: "booth", uri: "/booth" }];
 const Booth = () => {
+  const [totalBooth, setTotalBooth] = useState();
   return (
     <Box minH="100vh">
       <DashboardDrawer />
@@ -21,35 +23,18 @@ const Booth = () => {
       </DashboardTopNav>
 
       <DashboardContent minH="100vh">
-          <Box bgColor='red'>
-            <SimpleGrid columns={{sm: 3, md: 4}} spacing={5}>
-              
-
-                <BoothProfileCard/>
-        
-                <BoothProfileCard/>
-                <BoothProfileCard/>
-                <BoothProfileCard/>
-                <BoothProfileCard/>
-                <BoothProfileCard/>
-                <BoothProfileCard/>
-                <BoothProfileCard/>
-                <BoothProfileCard/>
-                <BoothProfileCard/>
-                <BoothProfileCard/>
-                <BoothProfileCard/>
-                <BoothProfileCard/>
-
-            </SimpleGrid>
-
-          </Box>
-          <Box>
-              sdadasdasdkasdjasdskadlklasjd
-              sdadasdasdkasdjasdskadlklasjd
-              sdadasdasdkasdjasdskadlklasjd
-              sdadasdasdkasdjasdskadlklasjd
-              sdadasdasdkasdjasdskadlklasjd
-          </Box>
+        <Container className="booth-profile-box-container" maxW="100%" mb={8}>
+          <StatsList>
+            <StatsCard
+              background="primary.900"
+              value={totalBooth}
+              description="Total All Booths"
+            />
+          </StatsList>
+        </Container>
+        <Container className="booth-profile-box-container" maxW="100%">
+          <BoothProfileList updateTotalBooth={setTotalBooth} />
+        </Container>
       </DashboardContent>
     </Box>
   );
