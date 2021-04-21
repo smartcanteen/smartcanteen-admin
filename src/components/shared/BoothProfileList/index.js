@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Heading, SimpleGrid } from "@chakra-ui/react";
+import { Box, Heading, SimpleGrid, Spinner } from "@chakra-ui/react";
 import { BoothProfileCard } from "components/shared";
 import { getAllBooth } from "configs/api";
 import { useRecoilValue } from "recoil";
@@ -10,13 +10,26 @@ const BoothProfileList = props => {
   useEffect(() => {
     const getAllBoothData = async () => {
       const response = await getAllBooth(token);
+      console.log(`responsesadsad`, response)
       const { data } = response?.data
-      setBoothData(data);
-      props.updateTotalBooth(data.length)
+      if(response.data.success){
+          await setBoothData(data);
+          props.updateTotalBooth(data.length)
+      }
     };
 
     getAllBoothData();
   }, []);
+  console.log(`boothData`, boothData)
+
+  if (boothData === undefined){
+      return(
+          <React.Fragment>
+              <Spinner/>
+          </React.Fragment>
+      )
+  }
+
   return (
     <React.Fragment>
       <Heading fontSize="xx-large" mb={3}>Booth Lists</Heading>

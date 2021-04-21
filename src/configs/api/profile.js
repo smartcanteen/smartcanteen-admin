@@ -5,7 +5,7 @@ export const getProfile = async (token) => {
     return await axios
       .get("/admin", {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization:token,
         },
       })
       .then((res) => {
