@@ -1,6 +1,6 @@
 import axios from "../axios";
 
-export const getAllBooth = async (token) => {
+export const getAllSeller = async (token) => {
     try{
         return await axios
           .get("/penjual/all", {
@@ -16,7 +16,7 @@ export const getAllBooth = async (token) => {
         return "Failed"
     }
 };
-export const registerBooth = async (token, payload) => {
+export const registerSeller = async (token, payload) => {
     console.log(`payload`, payload)
     const formData = new URLSearchParams()
     formData.append('first_name', payload.firstName)

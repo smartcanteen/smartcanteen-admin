@@ -2,15 +2,15 @@ import React from "react";
 import PropTypes from 'prop-types'
 import { Box, Button, Divider, Heading, Image, Text } from "@chakra-ui/react";
 import { PhoneIcon } from "@chakra-ui/icons";
-import BoothAvatar from "assets/images/BoothAvatar.svg";
+import SellerAvatar from "assets/images/SellerAvatar.svg";
 import { Link } from "react-router-dom";
 
 const cardWidth = "100%";
 // const cardWidth = "250px";
 const cardHeight = "300px";
 const cardBorderRad = 12
-const BoothProfileCard = props => {
-  const { boothName, boothDesc, boothPhone } = props
+const SellerProfileCard = props => {
+  const { sellerName, sellerDesc, sellerPhone } = props
   return (
     <Box
       minH={cardHeight}
@@ -31,13 +31,13 @@ const BoothProfileCard = props => {
         justifyContent="center"
         
       >
-        <Image src={BoothAvatar} boxSize="30%" mt={3} mb={4} />
+        <Image src={SellerAvatar} boxSize="30%" mt={3} mb={4} />
         <Box textAlign="center" px={4}>
           <Box my={2}>
             <Heading fontSize="lg" mb={2}>
-              { boothName }
+              { sellerName }
             </Heading>
-            <Text>{ boothDesc }</Text>
+            <Text>{ sellerDesc }</Text>
           </Box>
           <Divider />
           <Box
@@ -47,11 +47,11 @@ const BoothProfileCard = props => {
             className="phone-number"
           >
             <PhoneIcon color="blackAlpha.700" mr={1} />
-            <Text color="blackAlpha.700">{ boothPhone }</Text>
+            <Text color="blackAlpha.700">{ sellerPhone }</Text>
           </Box>
         </Box>
         <Box minW="100%">
-          <Link to="/booth/detail">
+          <Link to="/seller/detail">
             <Button
               borderRadius="0"
               bgColor="primary.500"
@@ -69,9 +69,9 @@ const BoothProfileCard = props => {
   );
 };
 
-BoothProfileCard.propTypes = {
-  boothName: PropTypes.string,
-  boothDesc: PropTypes.string,
-  boothPhone: PropTypes.string
+SellerProfileCard.propTypes = {
+  sellerName: PropTypes.string,
+  sellerDesc: PropTypes.string,
+  sellerPhone: PropTypes.string
 }
-export default BoothProfileCard;
+export default SellerProfileCard;

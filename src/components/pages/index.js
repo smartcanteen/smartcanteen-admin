@@ -2,13 +2,13 @@ import Login from './Login'
 import ProtectedRoute from './ProtectedRoute'
 import Dashboard from './Dashboard'
 import Profile from './Profile'
-import Booth from './Booth'
-import BoothAdd from './BoothAdd'
+import Seller from './Seller'
+import SellerAdd from './SellerAdd'
 export {
     Login,
     ProtectedRoute,
     Dashboard,
     Profile,
-    Booth,
-    BoothAdd
+    Seller,
+    SellerAdd
 }

@@ -4,10 +4,10 @@ import { DashboardDrawer, DashboardTopNav, DashboardBreadcrumb, DashboardContent
 import { authState } from 'recoil/authentication'
 import { useRecoilCallback, useRecoilValue } from "recoil";
 
-import { registerBooth } from 'configs/api'
+import { registerSeller } from 'configs/api'
 const breadCrumbItem = [
-    { label: "booth", uri: "/booth" },
-    { label: "add booth", uri: "/booth-add"}
+    { label: "seller", uri: "/seller" },
+    { label: "add seller", uri: "/seller-add"}
 ];
 
 // first_namePenjual
@@ -16,7 +16,7 @@ const breadCrumbItem = [
 // passwordpenjual2
 // no_telp0812345462
 
-const BoothAdd = () => {
+const SellerAdd = () => {
     const {token} = useRecoilValue(authState);
     const [sellerData, setSellerData] = useState({
         firstName:'',
@@ -32,7 +32,7 @@ const BoothAdd = () => {
       };
 
     const handleSubmit = useRecoilCallback( async ({set}) => {
-        const { data } = await registerBooth(token, sellerData)
+        const { data } = await registerSeller(token, sellerData)
         if(data.success){
             console.log(data)
         }
@@ -46,9 +46,9 @@ const BoothAdd = () => {
             </DashboardTopNav>
 
             <DashboardContent minH="100vh">
-            <Container className="booth-add-box-container" maxW="100%" mb={8}>
+            <Container className="seller-add-box-container" maxW="100%" mb={8}>
                 <Heading>
-                    Add Booth
+                    Add Seller
                 </Heading>
                 <Box bgColor="#FFF" my={5} p={8} maxWidth="50%">
                     <Box mb={4}>
@@ -91,4 +91,4 @@ const BoothAdd = () => {
     )
 }
 
-export default BoothAdd
+export default SellerAdd
