@@ -19,7 +19,7 @@ import SmartCanteenLogo from 'assets/images/SmartCanteenLogo.svg'
 import { ProfileCard } from 'components/shared'
 const menuList = [
     {label:'home', uri:'/'},
-    {label:'booth', uri:'/booth'},
+    {label:'seller', uri:'/seller'},
 ]
 
 const DashboardDrawer = () => {

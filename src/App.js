@@ -2,7 +2,7 @@ import React from 'react'
 import { createBrowserHistory } from 'history'
 import { Box } from '@chakra-ui/react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { Login, ProtectedRoute, Dashboard, Profile, Booth, BoothAdd, BoothDetail } from 'components/pages'
+import { Login, ProtectedRoute, Dashboard, Profile, Seller, SellerAdd, SellerDetail } from 'components/pages'
 
 export const history = createBrowserHistory()
 const App = () => {
@@ -13,9 +13,9 @@ const App = () => {
           <Route path="/login" component={Login} exact/>
           <ProtectedRoute path="/" component={Dashboard} exact/>
           <ProtectedRoute path="/profile" component={Profile} exact/>
-          <ProtectedRoute path="/booth" component={Booth} exact/>
-          <ProtectedRoute path="/booth-add" component={BoothAdd} exact/>
-          <ProtectedRoute path="/booth/detail/:uuid" component={BoothDetail} exact/>
+          <ProtectedRoute path="/seller" component={Seller} exact/>
+          <ProtectedRoute path="/seller-add" component={SellerAdd} exact/>
+          <ProtectedRoute path="/seller/detail/:uuid" component={SellerDetail} exact/>
         </Switch>
       </Router>
     </Box>

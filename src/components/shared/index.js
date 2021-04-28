@@ -7,8 +7,8 @@ import StatsCard from './StatsCard'
 import StatsList from './StatsList'
 import GreetingCard from './GreetingCard'
 import DashboardTopNav from './DashboardTopNav'
-import BoothProfileCard from './BoothProfileCard'
-import BoothProfileList from './BoothProfileList'
+import SellerProfileCard from './SellerProfileCard'
+import SellerProfileList from './SellerProfileList'
 export {
     DashboardDrawer,
     DashboardContent,
@@ -19,6 +19,6 @@ export {
     StatsCard,
     GreetingCard,
     DashboardTopNav,
-    BoothProfileCard,
-    BoothProfileList,
+    SellerProfileCard,
+    SellerProfileList,
 }

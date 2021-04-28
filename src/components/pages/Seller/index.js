@@ -5,15 +5,15 @@ import {
   DashboardTopNav,
   DashboardBreadcrumb,
   DashboardContent,
-  BoothProfileCard,
+  SellerProfileCard,
   StatsCard,
-  BoothProfileList,
+  SellerProfileList,
   StatsList,
 } from "components/shared";
 
-const breadCrumbItem = [{ label: "booth", uri: "/booth" }];
-const Booth = () => {
-  const [totalBooth, setTotalBooth] = useState();
+const breadCrumbItem = [{ label: "seller", uri: "/seller" }];
+const Seller = () => {
+  const [totalSeller, setTotalSeller] = useState();
   return (
     <Box minH="100vh">
       <DashboardDrawer />
@@ -23,21 +23,21 @@ const Booth = () => {
       </DashboardTopNav>
 
       <DashboardContent minH="100vh">
-        <Container className="booth-profile-box-container" maxW="100%" mb={8}>
+        <Container className="seller-profile-box-container" maxW="100%" mb={8}>
           <StatsList>
             <StatsCard
               background="primary.900"
-              value={totalBooth}
-              description="Total All Booths"
+              value={totalSeller}
+              description="Total All Sellers"
             />
           </StatsList>
         </Container>
-        <Container className="booth-profile-box-container" maxW="100%">
-          <BoothProfileList updateTotalBooth={setTotalBooth} />
+        <Container className="seller-profile-box-container" maxW="100%">
+          <SellerProfileList updateTotalSeller={setTotalSeller} />
         </Container>
       </DashboardContent>
     </Box>
   );
 };
 
-export default Booth;
+export default Seller;
