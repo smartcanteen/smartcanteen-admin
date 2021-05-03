@@ -1,0 +1,41 @@
+name: Build and Deploy
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+        with:
+          persist-credentials: false
+          
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install 🔧
+        run: npm install
+
+      - name: Build 🔧
+        run: |
+          npm run build
+          touch out/.nojekyll
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN_SECRET }}
+          REACT_APP_URI: ${{ secrets.REACT_APP_URI }}
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.TOKEN_SECRET }}
+          BRANCH: production # Nama branch yang akan digunakan.
+          FOLDER: out # Folder yang akan dideploy
+          CLEAN: true # Hapus file di dalam branch
