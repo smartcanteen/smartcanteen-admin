@@ -27,7 +27,6 @@ jobs:
       - name: Build 🔧
         run: |
           npm run build
-          touch out/.nojekyll
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_SECRET }}
           REACT_APP_URI: ${{ secrets.REACT_APP_URI }}
