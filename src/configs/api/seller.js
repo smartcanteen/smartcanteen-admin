@@ -16,6 +16,24 @@ export const getAllSeller = async (token) => {
         return "Failed"
     }
 };
+
+export const getSellerByAdmin = async (token,uuid) => {
+  try{
+      return await axios
+        .get("/penjual/"+uuid, {
+          headers: {
+            Authorization: token,
+          },
+        })
+    
+        .then((res) => res)
+        .catch((err) => err.response);
+
+  }catch{
+      return "Failed"
+  }
+};
+
 export const registerSeller = async (token, payload) => {
     console.log(`payload`, payload)
     const formData = new URLSearchParams()

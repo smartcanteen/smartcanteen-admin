@@ -4,11 +4,13 @@ import Dashboard from './Dashboard'
 import Profile from './Profile'
 import Seller from './Seller'
 import SellerAdd from './SellerAdd'
+import SellerDetail from './SellerDetail'
 export {
     Login,
     ProtectedRoute,
     Dashboard,
     Profile,
     Seller,
-    SellerAdd
+    SellerAdd,
+    SellerDetail
 }

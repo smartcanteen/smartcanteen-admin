@@ -1,3 +1,4 @@
 export { submitLogin, logout } from './auth'
 export { getProfile } from './profile'
-export { getAllSeller, registerSeller } from './seller'
+export { getAllSeller, registerSeller, getSellerByAdmin } from './seller'
+export { getSellerFood } from './food'

@@ -11,6 +11,7 @@ const cardHeight = "300px";
 const cardBorderRad = 12
 const SellerProfileCard = props => {
   const { sellerName, sellerDesc, sellerPhone } = props
+  const link = "/seller/detail/"+sellerDesc
   return (
     <Box
       minH={cardHeight}
@@ -51,7 +52,7 @@ const SellerProfileCard = props => {
           </Box>
         </Box>
         <Box minW="100%">
-          <Link to="/seller/detail">
+          <Link to={link}>
             <Button
               borderRadius="0"
               bgColor="primary.500"
