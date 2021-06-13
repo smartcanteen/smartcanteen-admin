@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Container, Heading, Text, Image, Flex, Center } from '@chakra-ui/react'
+import { makeStyles, Card, TableCell, TableContainer, TableRow, TableBody, Table } from '@material-ui/core';
+import { Edit, Delete } from '@material-ui/icons';
 import { DashboardDrawer, DashboardTopNav, DashboardBreadcrumb, DashboardContent } from 'components/shared'
 import { authState } from 'recoil/authentication'
 import { useRecoilCallback, useRecoilValue } from "recoil";
 import { getSellerByAdmin, getSellerFood } from "configs/api";
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableRow from '@material-ui/core/TableRow';
 import ProfileAvatar from 'assets/images/ProfileAvatar.svg'
-import { Edit, Delete } from '@material-ui/icons';
 
 
 
@@ -87,34 +83,38 @@ const SellerDetail = (props) => {
                     </Box>
                     <Card >
                         <TableContainer>
-                            <TableRow>
-                                <TableCell><Text>
-                                    <span style={{ fontWeight: "bold" }}>{"Id Penjual"}</span>
-                                </Text></TableCell>
-                                <TableCell>{":"}</TableCell>
-                                <TableCell>{uuid}</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell><Text>
-                                    <span style={{ fontWeight: "bold" }}>{"Email"}</span>
-                                </Text></TableCell>
-                                <TableCell>{":"}</TableCell>
-                                <TableCell>{sellerData?.email}</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell><Text>
-                                    <span style={{ fontWeight: "bold" }}>{"No. Telepon"}</span>
-                                </Text></TableCell>
-                                <TableCell>{":"}</TableCell>
-                                <TableCell>{sellerData?.no_telp}</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell><Text>
-                                    <span style={{ fontWeight: "bold" }}>{"Tenant"}</span>
-                                </Text></TableCell>
-                                <TableCell>{":"}</TableCell>
-                                <TableCell>{sellerData?.tenant.nama_warung}</TableCell>
-                            </TableRow>
+                            <Table>
+                                <TableBody>
+                                    <TableRow>
+                                        <TableCell><Text>
+                                            <span style={{ fontWeight: "bold" }}>{"Id Penjual"}</span>
+                                        </Text></TableCell>
+                                        <TableCell>{":"}</TableCell>
+                                        <TableCell>{uuid}</TableCell>
+                                    </TableRow>
+                                    <TableRow>
+                                        <TableCell><Text>
+                                            <span style={{ fontWeight: "bold" }}>{"Email"}</span>
+                                        </Text></TableCell>
+                                        <TableCell>{":"}</TableCell>
+                                        <TableCell>{sellerData?.email}</TableCell>
+                                    </TableRow>
+                                    <TableRow>
+                                        <TableCell><Text>
+                                            <span style={{ fontWeight: "bold" }}>{"No. Telepon"}</span>
+                                        </Text></TableCell>
+                                        <TableCell>{":"}</TableCell>
+                                        <TableCell>{sellerData?.no_telp}</TableCell>
+                                    </TableRow>
+                                    <TableRow>
+                                        <TableCell><Text>
+                                            <span style={{ fontWeight: "bold" }}>{"Tenant"}</span>
+                                        </Text></TableCell>
+                                        <TableCell>{":"}</TableCell>
+                                        <TableCell>{sellerData?.tenant.nama_warung}</TableCell>
+                                    </TableRow>
+                                </TableBody>
+                            </Table>
                         </TableContainer>
                     </Card>
 
