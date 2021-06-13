@@ -70,7 +70,7 @@ const SellerDetail = (props) => {
                 <Container className="booth-add-box-container" maxW="100%" mb={8}>
                     <Box p={4} bgColor="primary.500" maxW="100%">
                         <Flex>
-                            <Image src={ProfileAvatar} boxSize="7%" mr={4} />
+                            <Image src={ProfileAvatar} boxSize="7%" mr={8} />
                             <Center>
                                 <Box color="white" justifyContent="center" py={1} >
                                     <Heading>
