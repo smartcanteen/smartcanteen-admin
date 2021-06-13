@@ -35,7 +35,7 @@ const SellerProfileList = props => {
       <Heading fontSize="xx-large" mb={3}>Seller Lists</Heading>
       <SimpleGrid columns={{ sm: 2, md: 3, lg: 4 }} spacing={5}>
         {sellerData?.map((seller, index) => (
-          <SellerProfileCard key={index} sellerName={seller.first_name} sellerDesc={seller.id_penjual} sellerPhone={seller.no_telp} sellerTenant={seller.tenant.nama_warung} />
+          <SellerProfileCard key={index} sellerName={seller.first_name} sellerId={seller.id_penjual} sellerPhone={seller.no_telp} sellerTenant={seller.tenant.nama_warung} />
         ))}
       </SimpleGrid>
     </React.Fragment>
