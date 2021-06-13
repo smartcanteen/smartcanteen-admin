@@ -10,8 +10,8 @@ const cardWidth = "100%";
 const cardHeight = "300px";
 const cardBorderRad = 12
 const SellerProfileCard = props => {
-  const { sellerName, sellerDesc, sellerPhone } = props
-  const link = "/seller/detail/"+sellerDesc
+  const { sellerName, sellerId, sellerPhone, sellerTenant } = props
+  const link = "/seller/detail/" + sellerId
   return (
     <Box
       minH={cardHeight}
@@ -30,15 +30,15 @@ const SellerProfileCard = props => {
         flexDir="column"
         alignItems="center"
         justifyContent="center"
-        
+
       >
         <Image src={SellerAvatar} boxSize="30%" mt={3} mb={4} />
         <Box textAlign="center" px={4}>
           <Box my={2}>
             <Heading fontSize="lg" mb={2}>
-              { sellerName }
+              {sellerName}
             </Heading>
-            <Text>{ sellerDesc }</Text>
+            <Text>{sellerTenant}</Text>
           </Box>
           <Divider />
           <Box
@@ -48,7 +48,7 @@ const SellerProfileCard = props => {
             className="phone-number"
           >
             <PhoneIcon color="blackAlpha.700" mr={1} />
-            <Text color="blackAlpha.700">{ sellerPhone }</Text>
+            <Text color="blackAlpha.700">{sellerPhone}</Text>
           </Box>
         </Box>
         <Box minW="100%">
