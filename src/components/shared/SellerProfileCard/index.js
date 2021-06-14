@@ -48,7 +48,10 @@ const SellerProfileCard = props => {
             className="phone-number"
           >
             <PhoneIcon color="blackAlpha.700" mr={1} />
-            <Text color="blackAlpha.700">{sellerPhone}</Text>
+            {/* <Text color="blackAlpha.700">{sellerPhone}</Text> */}
+            <a href={`https://api.whatsapp.com/send?phone=${sellerPhone}`} isExternal>
+              {sellerPhone}
+            </a>
           </Box>
         </Box>
         <Box minW="100%">
