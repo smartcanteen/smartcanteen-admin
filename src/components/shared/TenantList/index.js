@@ -31,7 +31,7 @@ const TenantList = props => {
 
   return (
     <React.Fragment>
-      <Heading fontSize="xx-large" mb={3}>Seller Lists</Heading>
+      <Heading fontSize="xx-large" mb={3}>Tenant Lists</Heading>
       <SimpleGrid columns={{ sm: 2, md: 3, lg: 4 }} spacing={5}>
         {tenantData?.map((tenant, index) => (
           <TenantCard key={index} tenantName={tenant.nama_warung} tenantId={tenant.id_warung} tenantDesc={tenant.deskripsi} />
