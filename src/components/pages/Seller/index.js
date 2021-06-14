@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom"
 import { Box, SimpleGrid, Container, Heading } from "@chakra-ui/react";
 import {
   DashboardDrawer,
@@ -31,6 +32,7 @@ const Seller = () => {
               description="Total All Sellers"
             />
           </StatsList>
+          <Link to="/seller-add"> +</Link>
         </Container>
         <Container className="seller-profile-box-container" maxW="100%">
           <SellerProfileList updateTotalSeller={setTotalSeller} />
