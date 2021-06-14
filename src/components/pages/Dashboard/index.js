@@ -1,31 +1,33 @@
 import React from 'react'
 import { Box, Heading } from '@chakra-ui/react'
-import { DashboardDrawer, DashboardContent, DashboardBreadcrumb, GreetingCard, DashboardTopNav } from 'components/shared'
+import { DashboardDrawer, DashboardContent, DashboardBreadcrumb, GreetingCard, DashboardTopNav, StatisticCard, StatsCard } from 'components/shared'
 
 const breadCrumbItem = [
-    {label:'home', uri:'/'},
+    { label: 'home', uri: '/' },
 ]
 
 const Dashboard = () => {
     return (
         <Box minH="100vh">
-            <DashboardDrawer/>
+            <DashboardDrawer />
 
             <DashboardTopNav>
-                <DashboardBreadcrumb breadcrumbData={breadCrumbItem}/>
+                <DashboardBreadcrumb breadcrumbData={breadCrumbItem} />
             </DashboardTopNav>
-            
-            <DashboardContent>
-                <GreetingCard/>
-                {/* <Box className="stats-wrapper" d="flex" w="100%" bgColor="pink" justifyContent="">
-                    <StatsCard bgColor="primary.500"/>
-                    <StatsCard bgColor="primary.500"/>
-                    <StatsCard bgColor="primary.500"/>
-                    <StatsCard bgColor="primary.500"/>
-                </Box> */}
-                {/* <Box>
 
-                </Box> */}
+            <DashboardContent>
+                <Box mb={5}>
+                    <GreetingCard />
+                </Box>
+                <Box className="stats-wrapper" d="flex" w="100%" mb={5} justifyContent="space-between">
+                    <StatsCard bgColor="primary.500" value="100" description="Penjualan" />
+                    <StatsCard bgColor="primary.500" value="500.000" description="Keuntungan" />
+                    <StatsCard bgColor="primary.500" value="80" description="Transaksi" />
+                    <StatsCard bgColor="primary.500" value="30" description="Pembelian" />
+                </Box>
+                <Box>
+                    <StatisticCard />
+                </Box>
             </DashboardContent>
         </Box>
     )
