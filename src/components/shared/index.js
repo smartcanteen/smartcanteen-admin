@@ -9,6 +9,8 @@ import GreetingCard from './GreetingCard'
 import DashboardTopNav from './DashboardTopNav'
 import SellerProfileCard from './SellerProfileCard'
 import SellerProfileList from './SellerProfileList'
+import TenantList from './TenantList'
+import TenantCard from './TenantCard'
 export {
     DashboardDrawer,
     DashboardContent,
@@ -21,4 +23,6 @@ export {
     DashboardTopNav,
     SellerProfileCard,
     SellerProfileList,
+    TenantList,
+    TenantCard
 }

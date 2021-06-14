@@ -18,42 +18,44 @@ import SmartCanteenLogo from 'assets/images/SmartCanteenLogo.svg'
 
 import { ProfileCard } from 'components/shared'
 const menuList = [
-    {label:'home', uri:'/'},
-    {label:'seller', uri:'/seller'},
+  { label: 'home', uri: '/' },
+  { label: 'seller', uri: '/seller' },
+  { label: 'tenant', uri: '/tenant' },
+
 ]
 
 const DashboardDrawer = () => {
-    const currentPath = useLocation().pathname;
+  const currentPath = useLocation().pathname;
   return (
     <Drawer variant='alwaysOpen' isOpen placement="left" motionPreset="none" autoFocus={false} blockScrollOnMount={false} closeOnOverlayClick={false} trapFocus={false} useInert={false}>
       <DrawerContent>
         <DrawerHeader mb={12}>
-            <Box d="flex" justifyContent="center" alignItems="center">
-                <Image src={SmartCanteenLogo} boxSize="85%"/>
-            </Box>
-            </DrawerHeader>
+          <Box d="flex" justifyContent="center" alignItems="center">
+            <Image src={SmartCanteenLogo} boxSize="85%" />
+          </Box>
+        </DrawerHeader>
         <DrawerBody>
-        <Link to="/profile">
+          <Link to="/profile">
             <Box mb={5}>
-                <ProfileCard/>
+              <ProfileCard />
             </Box>
-        </Link>
-        {menuList.map((menu,index) =>
+          </Link>
+          {menuList.map((menu, index) =>
             <Link to={menu.uri} key={index}>
-                <Button colorScheme="primary"  mb={5} variant={currentPath === menu.uri ? 'solid' : 'ghost'} width="100%" >
-                    <Text w="100%" textAlign="left" textTransform="capitalize">
-                        {menu.label}
-                    </Text>
-                </Button>
+              <Button colorScheme="primary" mb={5} variant={currentPath === menu.uri ? 'solid' : 'ghost'} width="100%" >
+                <Text w="100%" textAlign="left" textTransform="capitalize">
+                  {menu.label}
+                </Text>
+              </Button>
             </Link>
-        
-        )}
+
+          )}
         </DrawerBody>
         <DrawerFooter>
           <Box>
-              <Text fontSize="sm">
-                &copy; SmartCanteen 2021 - All Rights Reserved.
-              </Text>
+            <Text fontSize="sm">
+              &copy; SmartCanteen 2021 - All Rights Reserved.
+            </Text>
           </Box>
         </DrawerFooter>
       </DrawerContent>
