@@ -6,6 +6,7 @@ import Seller from './Seller'
 import SellerAdd from './SellerAdd'
 import SellerDetail from './SellerDetail'
 import Tenant from './Tenant'
+import TenantDetail from './TenantDetail'
 export {
     Login,
     ProtectedRoute,
@@ -14,5 +15,6 @@ export {
     Seller,
     SellerAdd,
     SellerDetail,
-    Tenant
+    Tenant,
+    TenantDetail
 }
