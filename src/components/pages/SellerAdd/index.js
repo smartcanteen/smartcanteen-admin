@@ -16,7 +16,8 @@ const breadCrumbItem = [
 // passwordpenjual2
 // no_telp0812345462
 
-const SellerAdd = () => {
+const SellerAdd = (props) => {
+    const { history } = props
     const {token} = useRecoilValue(authState);
     const [sellerData, setSellerData] = useState({
         firstName:'',
@@ -35,6 +36,7 @@ const SellerAdd = () => {
         const { data } = await registerSeller(token, sellerData)
         if(data.success){
             console.log(data)
+            history.goBack()
         }
     })
     //   console.log(`sellerData`, sellerData)

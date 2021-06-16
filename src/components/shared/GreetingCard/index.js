@@ -58,29 +58,31 @@ const GreetingCard = () => {
         clockColor = "#000";
         captionColor = "#000"
   }
-  return (
-    <Box
-      d="flex"
-      flexDir="column"
-      alignItems="center"
-      justifyContent="center"
-      p={4}
-      borderRadius={8}
-      bgImage={`url(${bgImage})`}
-      bgSize="cover"
-      minH="250px"
-      bgPos="bottom"
-      bgRepeat="no-repeat"
-    >
-      <Box mb="-3px">
-        <Heading fontSize="100px" textColor={currentStatus(currentDate) === 'night' ? '#F39C12' : '#182C61'}>{(currentTime.hours<10?'0':'') + currentTime.hours}:{(currentTime.minutes<10?'0':'') + currentTime.minutes}</Heading>
+  if (profileData){
+    return (
+      <Box
+        d="flex"
+        flexDir="column"
+        alignItems="center"
+        justifyContent="center"
+        p={4}
+        borderRadius={8}
+        bgImage={`url(${bgImage})`}
+        bgSize="cover"
+        minH="250px"
+        bgPos="bottom"
+        bgRepeat="no-repeat"
+      >
+        <Box mb="-3px">
+          <Heading fontSize="100px" textColor={currentStatus(currentDate) === 'night' ? '#F39C12' : '#182C61'}>{(currentTime.hours<10?'0':'') + currentTime.hours}:{(currentTime.minutes<10?'0':'') + currentTime.minutes}</Heading>
+        </Box>
+        <Box textAlign="center">
+            <Text fontSize="40px" fontWeight="bold" textColor={captionColor} textTransform="capitalize">Good {currentStatus(currentDate)}, {profileData?.first_name + ' ' + profileData?.last_name}</Text>
+            <Text fontSize="20px" textColor={captionColor} textTransform="capitalize">{greetingText}</Text>
+        </Box>
       </Box>
-      <Box textAlign="center">
-          <Text fontSize="40px" fontWeight="bold" textColor={captionColor} textTransform="capitalize">Good {currentStatus(currentDate)}, {profileData?.first_name + ' ' + profileData?.last_name}</Text>
-          <Text fontSize="20px" textColor={captionColor} textTransform="capitalize">{greetingText}</Text>
-      </Box>
-    </Box>
-  );
+    );
+  }
 };
 
 export default GreetingCard;

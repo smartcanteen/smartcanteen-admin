@@ -11,6 +11,7 @@ import SellerProfileCard from './SellerProfileCard'
 import SellerProfileList from './SellerProfileList'
 import TenantList from './TenantList'
 import TenantCard from './TenantCard'
+import MenuCard from './MenuCard'
 import StatisticCard from './StatisticCard'
 export {
     DashboardDrawer,
@@ -26,5 +27,6 @@ export {
     SellerProfileList,
     TenantList,
     TenantCard,
-    StatisticCard
+    StatisticCard,
+    MenuCard
 }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Box, Container, Heading, Text, Image, Flex, Center } from '@chakra-ui/react'
 import { makeStyles, Card, TableCell, TableContainer, TableRow, TableBody, Table } from '@material-ui/core';
 import { Edit, Delete } from '@material-ui/icons';
-import { DashboardDrawer, DashboardTopNav, DashboardBreadcrumb, DashboardContent } from 'components/shared'
+import { DashboardDrawer, DashboardTopNav, DashboardBreadcrumb, DashboardContent, MenuCard } from 'components/shared'
 import { authState } from 'recoil/authentication'
 import { useRecoilCallback, useRecoilValue } from "recoil";
 import { getSellerByAdmin, getSellerFood } from "configs/api";
@@ -37,7 +37,7 @@ const SellerDetail = (props) => {
             const { data } = response?.data
             if (response.data.success) {
                 await setSellerData(data);
-                getFood(data?.tenant.id_warung);
+                if (data?.tenant) getFood(data?.tenant.id_warung);
             }
         };
 
@@ -73,7 +73,7 @@ const SellerDetail = (props) => {
                                         {sellerData?.first_name + " " + sellerData?.last_name}
                                     </Heading>
                                     <Text style={{ fontSize: "24px" }}>
-                                        {sellerData?.tenant.nama_warung}
+                                        {sellerData?.tenant ? sellerData?.tenant.nama_warung : "Belum ada"}
                                     </Text>
                                 </Box>
                             </Center>
@@ -111,17 +111,19 @@ const SellerDetail = (props) => {
                                             <span style={{ fontWeight: "bold" }}>{"Tenant"}</span>
                                         </Text></TableCell>
                                         <TableCell>{":"}</TableCell>
-                                        <TableCell>{sellerData?.tenant.nama_warung}</TableCell>
+                                        <TableCell>{sellerData?.tenant ? sellerData?.tenant.nama_warung : "Belum ada"}</TableCell>
                                     </TableRow>
                                 </TableBody>
                             </Table>
                         </TableContainer>
                     </Card>
 
-                    {foodData?.map((food, index) => {
-                        console.log(food)
-                    })
-                    }
+                    <Box p={2}>
+
+                        {foodData && foodData?.map((food, index) => (
+                        <MenuCard key={index} id_makanan={food.id_makanan} nama={food.nama} harga={food.harga} kategori={food.kategori} />
+                        ))}
+                    </Box>
                 </Container>
             </DashboardContent>
         </Box >
