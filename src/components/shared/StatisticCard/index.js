@@ -12,13 +12,13 @@ import {
 
 
 const staticDatas = [
-    { name: "Senin", pv: 44 },
-    { name: "Selasa", pv: 79 },
-    { name: "Rabu", pv: 45 },
-    { name: "Kamis", pv: 28 },
-    { name: "Jumat", pv: 55 },
-    { name: "Sabtu", pv: 93 },
-    { name: "Minggu", pv: 3 },
+    { name: "Januari", pv: 0 },
+    { name: "Februari", pv: 0 },
+    { name: "Maret", pv: 0 },
+    { name: "April", pv: 0 },
+    { name: "Mei", pv: 0 },
+    { name: "Juni", pv: 8 },
+    { name: "Juli", pv: 0 },
 ];
 
 const StatisticCard = () => {
